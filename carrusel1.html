@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carreras Universitarias</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .carousel-item img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+      object-position: center;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    // Script simple para mostrar/ocultar menú móvil
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
+</head>
+<body class="bg-gray-100">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md px-6 py-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="text-xl font-bold text-green-600">Menú Responsive</div>
+
+      <!-- Botón Hamburguesa -->
+      <button class="md:hidden focus:outline-none" onclick="toggleMenu()">
+        <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+
+      <!-- Menú (pantalla grande) -->
+      <ul class="hidden md:flex space-x-6 font-semibold text-gray-700">
+        <li><a href="index.html" class="hover:text-blue-600"> Inicio</a></li>
+        <li><a href="prac1.html" class="hover:text-blue-600">Ejercicio 1</a></li>
+        <li><a href="prac2.html" class="hover:text-blue-600">Ejercicio 2</a></li>
+        <li><a href="prac3.html" class="hover:text-blue-600">Ejercicio 3</a></li>
+        <li><a href="prac4.html" class="hover:text-blue-600">Ejercicio 4</a></li>
+        <li><a href="carta.html" class="hover:text-blue-600">Ejercicio 5</a></li>
+        <li><a href="carrusel1.html" class="hover:text-blue-600">Ejercicio 6</a></li>
+      </ul>
+    </div>
+
+    <!-- Menú móvil -->
+    <div id="mobile-menu" class="md:hidden hidden mt-4">
+      <ul class="flex flex-col space-y-2 font-medium text-gray-700">
+        <li><a href="index.html" class="block px-4 py-2 hover:bg-blue-100 rounded">Inicio</a></li>
+        <li><a href="prac1.html" class="block px-4 py-2 hover:bg-blue-100 rounded">Ejercicio 1</a></li>
+        <li><a href="prac2.html" class="block px-4 py-2 hover:bg-blue-100 rounded">Ejercicio 2</a></li>
+        <li><a href="prac3.html" class="block px-4 py-2 hover:bg-blue-100 rounded">Ejercicio 3</a></li>
+        <li><a href="prac4.html" class="block px-4 py-2 hover:bg-blue-100 rounded">Ejercicio 4</a></li>
+        <li><a href="carta.html" class="block px-4 py-2 hover:bg-blue-100 rounded">Ejercicio 5</a></li>
+        <li><a href="carrusel1.html" class="block px-4 py-2 hover:bg-blue-100 rounded">Ejercicio 6</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Carrusel -->
+  <div class="container mx-auto mt-8">
+    <h2 class="text-center text-3xl font-semibold mb-8"> CARRUSEL</h2>
+
+    <div id="carouselExampleControls" class="relative">
+      <div class="carousel-inner relative w-full overflow-hidden">
+        <div class="carousel-item active relative float-left w-full">
+          <img src="p1.webp" class="d-block mx-auto" alt="Carrera de Ingeniería" class="carousel-item-img">
+          <div class="carousel-caption absolute bottom-10 left-1/2 transform -translate-x-1/2 text-center text-white">
+            <h5 class="text-xl font-bold"></h5>
+            <p></p>
+          </div>
+        </div>
+        <div class="carousel-item relative float-left w-full">
+          <img src="p2.jpg" class="d-block mx-auto" alt="Carrera de Medicina" class="carousel-item-img">
+          <div class="carousel-caption absolute bottom-10 left-1/2 transform -translate-x-1/2 text-center text-white">
+            <h5 class="text-xl font-bold"> </h5>
+            <p></p>
+          </div>
+        </div>
+        <div class="carousel-item relative float-left w-full">
+          <img src="p3.jpg" class="d-block mx-auto" alt="Carrera de Derecho" class="carousel-item-img">
+          <div class="carousel-caption absolute bottom-10 left-1/2 transform -translate-x-1/2 text-center text-white">
+            <h5 class="text-xl font-bold"></h5>
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controles de navegación -->
+      <button class="absolute top-0 left-0 p-4 text-white bg-black bg-opacity-50" id="prev" aria-label="Previous">
+        &#10094;
+      </button>
+      <button class="absolute top-0 right-0 p-4 text-white bg-black bg-opacity-50" id="next" aria-label="Next">
+        &#10095;
+      </button>
+    </div>
+  </div>
+
+  <!-- Tailwind JS -->
+  <script>
+    let currentIndex = 0;
+    const items = document.querySelectorAll('.carousel-item');
+    const totalItems = items.length;
+
+    document.getElementById('next').addEventListener('click', () => {
+      items[currentIndex].classList.remove('block');
+      items[currentIndex].classList.add('hidden');
+      currentIndex = (currentIndex + 1) % totalItems;
+      items[currentIndex].classList.remove('hidden');
+      items[currentIndex].classList.add('block');
+    });
+
+    document.getElementById('prev').addEventListener('click', () => {
+      items[currentIndex].classList.remove('block');
+      items[currentIndex].classList.add('hidden');
+      currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+      items[currentIndex].classList.remove('hidden');
+      items[currentIndex].classList.add('block');
+    });
+  </script>
+
+</body>
+
+</html>
